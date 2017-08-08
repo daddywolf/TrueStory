@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>青大CC周年庆——没有真心话，只有大冒险</title>
+<head>
+    <script id="jquery_172" type="text/javascript" class="library" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var alldata = new Array("站到凳子上表演大猩猩捶胸呐喊动作",
+                "学超级名模走秀，绕屋子一圈", "找在场的一位异性唱小苹果。（邀请，三次失败喝蛇草水）",
+                "找一位异性玩不许眨眼游戏，你赢了算你过，输了喝蛇草水",
+                "右手捏住左耳垂，弯下腰，顺时针转10圈，再金鸡独立15秒不许倒",
+                "模仿古代特殊职业女子拉客，一分钟", "脱一件衣服持续到结束",
+                "找离你最远的一位同性隔着纸牌亲脸", "找离你最远的一位同性隔着纸牌亲嘴",
+                "在厕所里唱歌， 让大家都能听到唱的是什么", "和左边第一个 异性换穿上衣",
+                "和右边第一个异性关在厕所里等一轮游戏", "用手纸当围巾，围脖子上持续一轮游戏",
+                "把从你右手边数起第三位异性的腿架在肩上替其捶腿，边说\"大爷您舒服吗？\"", "自罚一杯酒",
+                "把左边离得最近的衣服有纽扣的同性玩家衣服的纽扣用牙齿解开一颗", "所有输家一起玩撕纸，4人起");
+            var num = alldata.length - 1;
+            var show = $("#show");
+            var btn = $("#btn");
+            var open = false;
+            var count_text = $('#count');
+            var count = 1;
+
+            function change() {
+
+                var randomVal = Math.round(Math.random() * num);
+                var prizeName = alldata[randomVal];
+                show.text(prizeName);
+            }
+
+            function run() {
+                if (!open) {
+                    timer = setInterval(change, 30);
+                    btn.removeClass('start').addClass('stop').text('停止');
+                    open = true;
+                } else {
+                    count++;
+                    clearInterval(timer);
+                    btn.removeClass('stop').addClass('start').text('重新"冒险"');
+                    open = false;
+                }
+            }
+
+            btn.click(function () {
+
+                count_text.text("当前第" + count + "次冒险")
+                run();
+            })
+
+        })
+
+    </script>
+    <style>
+        body {
+            background: #fff;
+        }
+
+        .title {
+            text-align: center;
+            text-shadow: 3px 3px 10px #BBBBBB;
+        }
+
+        .wrap {
+            width: 400px;
+            margin: 0px auto;
+            font-family: "微软雅黑";
+        }
+
+        .show {
+            width: 400px;
+            height: 400px;
+            background-color: #ff3300;
+            /*line-height: 100px;*/
+            vertical-align: middle;
+            display: table-cell;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            -moz-border-radius: 200px;
+            -webkit-border-radius: 200px;
+            border-radius: 200px;
+            background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FF9600), to(#F84000), color-stop(0.5, #fb6c00));
+            -moz-box-shadow: 2px 2px 10px #BBBBBB;
+            -webkit-box-shadow: 2px 2px 10px #BBBBBB;
+            box-shadow: 3px 3px 10px #BBBBBB;
+            text-shadow: 1px 1px 10px #BBBBBB;
+        }
+
+        .btn a {
+            display: block;
+            width: 120px;
+            height: 50px;
+            margin: 30px auto;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+            color: #fff;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            box-shadow: 3px 3px 10px #BBBBBB;
+        }
+
+        .btn a.start {
+            background: #80b600;
+        }
+
+        .btn a.start:hover {
+            background: #75a700;
+        }
+
+        .btn a.stop {
+            background: #00a2ff;
+        }
+
+        .btn a.stop:hover {
+            background: #008bdb;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="title">
+    <h1>没有真心话，只有大冒险😈</h1>
+    <h2>不服和党博打一架</h2>
+</div>
+<div class="wrap">
+    <div class="show" id="show">你会抽到什么羞羞的东西呢？</div>
+    <div class="btn">
+        <a href="javascript:void(0)" class="start" id="btn">开始"冒险"</a>
+    </div>
+    <div align="right" id="count">
+        当前还没有人冒险
+    </div>
+</div>
+<div style="text-align:center;clear:both">
+</div>
+</body>
+</html>
